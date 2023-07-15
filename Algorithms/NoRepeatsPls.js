@@ -27,6 +27,29 @@ function permAlone(str) {
     permute(str, 0, str.length - 1);
     return counter;
 }
+// Optimized Solution
+//
+// function permAlone(str: string): number {
+//   function permute(chars: string[], start: number, end: number): void {
+//     if (start === end) {
+//       if (!chars.slice(0, end).some((c, i) => c === chars[i + 1])) {
+//         counter++;
+//       }
+//     } else {
+//       for (let i = start; i <= end; i++) {
+//         [chars[start], chars[i]] = [chars[i], chars[start]];
+//         if (start === 0 || chars[start - 1] !== chars[start]) {
+//           permute(chars, start + 1, end);
+//         }
+//         [chars[start], chars[i]] = [chars[i], chars[start]]; // backtrack
+//       }
+//     }
+//   }
+//   const chars = Array.from(str);
+//   let counter = 0;
+//   permute(chars, 0, chars.length - 1);
+//   return counter;
+// }
 console.log(permAlone('aab')); // Output: 2
 console.log(permAlone('aaa')); // Output: 0
 console.log(permAlone('aabb')); // Output: 8
